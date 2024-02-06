@@ -12,6 +12,8 @@
   </head>
   <body
     class="h-full grid place-content-center font-raleway text-black text-center bg-yellow-100"
+    x-data="{ selectedTournament: '', tournaments: []}"
+    x-init="tournaments = await (await fetch('/dates.json')).json()"
   >
     <img src="ball.svg" alt="tennis ball" class="h-[10vh] w-full" />
     <h1 class="mb-8 text-3xl">How long until the next Grand Slam this year?</h1>
@@ -23,15 +25,15 @@
         name="grand-slams"
         id="slams"
         class="p-2 shadow-sm border border-current rounded cursor-pointer"
+        x-model="selectedTournament"
       >
-        <option disabled selected value>Select a Grand Slam</option>
-        <option value="Australian Open">Australian Open</option>
-        <option value="Roland Garros">Roland Garros</option>
-        <option value="Wimbledon">Wimbledon</option>
-        <option value="US Open">US Open</option>
+        <option disabled selected value="">Select a Grand Slam</option>
+        <template x-for="tournament in tournaments" :key="tournament.slam">
+          <option :value="tournament.slam" x-text="tournament.slam"></option>
+        </template>
       </select>
     </div>
-    <div class="text-2xl text-green-700">Something will go here</div>
+    <p class="text-2xl text-green-700" x-text="selectedTournament"></p>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

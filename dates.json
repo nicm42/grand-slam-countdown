@@ -1,0 +1,22 @@
+[
+  {
+    "slam": "Australian Open",
+    "start": "1401",
+    "end": "2801"
+  },
+  {
+    "slam": "Roland Garros",
+    "start": "2605",
+    "end": "0906"
+  },
+  {
+    "slam": "Wimbledon",
+    "start": "0107",
+    "end": "1407"
+  },
+  {
+    "slam": "US Open",
+    "start": "2608",
+    "end": "0808"
+  }
+]
