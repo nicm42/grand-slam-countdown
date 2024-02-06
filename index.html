@@ -13,7 +13,7 @@
     <title>Grand Slam Countdown</title>
   </head>
   <body
-    class="h-full grid place-content-center font-raleway text-black text-center bg-yellow-100"
+    class="h-full py-16 px-4 font-raleway text-black text-center bg-yellow-100"
     x-data="{ selectedTournament: '', tournaments: [], date: 'test', message: '', colour: '' }"
     x-init="tournaments = await (await fetch('/dates.json')).json()"
   >
