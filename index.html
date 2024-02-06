@@ -14,7 +14,7 @@
   </head>
   <body
     class="h-full grid place-content-center font-raleway text-black text-center bg-yellow-100"
-    x-data="{ selectedTournament: '', tournaments: [], date: ''}"
+    x-data="{ selectedTournament: '', tournaments: [], date: 'test', message: '', colour: '' }"
     x-init="tournaments = await (await fetch('/dates.json')).json()"
   >
     <img src="ball.svg" alt="tennis ball" class="h-[10vh] w-full" />
@@ -28,6 +28,27 @@
         id="slams"
         class="p-2 shadow-sm border border-current rounded cursor-pointer"
         x-model="selectedTournament"
+        @change="thisTournament = tournaments.find(tournament => tournament.slam === selectedTournament);
+          today = new Date();
+          slamStart = new Date(today.getFullYear(), thisTournament.start[1] - 1, thisTournament.start[0]);
+          slamEnd = new Date(today.getFullYear(), thisTournament.end[1] - 1, thisTournament.end[0]);
+          if (today > slamEnd) {
+            message = `${thisTournament.slam} has already happened this year :(`;
+            colour = 'red';
+          };
+          if (today >= slamStart && today <= slamEnd) {
+            message = `${thisTournament.slam} is currently being played`;
+            colour = 'blue';
+          }
+          if (today < slamStart) {
+            daysUntilStart = Math.floor((slamStart - today) / (1000 * 60 * 60 * 24));
+            message = `${thisTournament.slam} will start in ${daysUntilStart} ${daysUntilStart === 1 ? 'day' : 'days'}`;
+            if (daysUntilStart < 7) {
+              message += '. Are you excited?'
+            }
+            colour = 'green';
+          };
+        "
       >
         <option disabled selected value="">Select a Grand Slam</option>
         <template x-for="tournament in tournaments" :key="tournament.slam">
@@ -35,7 +56,11 @@
         </template>
       </select>
     </div>
-    <p class="text-2xl text-green-700" x-text="selectedTournament"></p>
+    <p
+      class="text-2xl"
+      x-text="message"
+      x-bind:class="colour === 'red' ? 'text-red-700' : colour === 'blue' ? 'text-blue-700' : 'text-green-700'"
+    ></p>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

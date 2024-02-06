@@ -1,22 +1,22 @@
 [
   {
     "slam": "Australian Open",
-    "start": "1401",
-    "end": "2801"
+    "start": ["14", "01"],
+    "end": ["28", "01"]
   },
   {
     "slam": "Roland Garros",
-    "start": "2605",
-    "end": "0906"
+    "start": ["26", "05"],
+    "end": ["09", "06"]
   },
   {
     "slam": "Wimbledon",
-    "start": "0107",
-    "end": "1407"
+    "start": ["01", "07"],
+    "end": ["14", "07"]
   },
   {
     "slam": "US Open",
-    "start": "2608",
-    "end": "0808"
+    "start": ["26", "08"],
+    "end": ["08", "08"]
   }
 ]
