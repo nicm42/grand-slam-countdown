@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,7 +14,7 @@
   </head>
   <body
     class="h-full grid place-content-center font-raleway text-black text-center bg-yellow-100"
-    x-data="{ selectedTournament: '', tournaments: []}"
+    x-data="{ selectedTournament: '', tournaments: [], date: ''}"
     x-init="tournaments = await (await fetch('/dates.json')).json()"
   >
     <img src="ball.svg" alt="tennis ball" class="h-[10vh] w-full" />
