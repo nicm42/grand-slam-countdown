@@ -26,7 +26,7 @@ I wanted something relatively simple to practice Tailwind and Alpine. This was a
 
 ## Setup
 
-To view this project visit the Demo TBC or download the files, open a terminal in that folder and install locally using npm:
+To view this project visit the [demo](https://grand-slam-countdown.pages.dev/) or download the files, open a terminal in that folder and install locally using npm:
 
 ```
 npm install
@@ -42,4 +42,4 @@ npm run dev
 
 ## Status
 
-Project is: _in progress_
+Project is: _finished_
