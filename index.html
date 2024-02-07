@@ -24,13 +24,13 @@
         How long until the next Grand Slam this year?
       </h1>
       <div class="mb-8 flex flex-wrap justify-center gap-2">
-        <label for="slams" class="text-2xl"
+        <label for="slams" class="text-2xl peer"
           >Select which Grand Slam you'd like a countdown for</label
         >
         <select
           name="grand-slams"
           id="slams"
-          class="p-2 shadow-sm border border-current rounded cursor-pointer"
+          class="pl-4 pr-8 py-2 shadow-sm border border-current rounded cursor-pointer appearance-none bg-yellow-200 hover:bg-yellow-100 focus:bg-yellow-100 hover:transition-colors focus:transition-colors peer-hover:bg-yellow-200 bg-[url('chevron.svg')] bg-no-repeat bg-[center_right_12px] bg-[length:12px_12px]"
           x-init="getData"
           x-model="selectedTournament"
           @change="calculateDates(`${selectedTournament}`)"
