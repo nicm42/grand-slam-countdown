@@ -1,14 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ball.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Grand Slam Countdown</title>
   </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+  <body
+    class="h-full py-16 px-4 font-raleway text-black text-center bg-yellow-100"
+    x-data="{ selectedTournament: '' }"
+  >
+    <div x-data="app">
+      <div class="w-full flex justify-center">
+        <img src="ball.svg" alt="tennis ball" class="h-[10vh]" />
+      </div>
+      <h1 class="mb-8 text-3xl">
+        How long until the next Grand Slam this year?
+      </h1>
+      <div class="mb-8 flex flex-wrap justify-center gap-2">
+        <label for="slams" class="text-2xl peer"
+          >Select which Grand Slam you'd like a countdown for</label
+        >
+        <select
+          name="grand-slams"
+          id="slams"
+          class="pl-4 pr-8 py-2 shadow-sm border border-current rounded cursor-pointer appearance-none bg-yellow-200 hover:bg-yellow-100 focus:bg-yellow-100 hover:transition-colors focus:transition-colors peer-hover:bg-yellow-200 bg-[url('chevron.svg')] bg-no-repeat bg-[center_right_12px] bg-[length:12px_12px]"
+          x-init="getData"
+          x-model="selectedTournament"
+          @change="calculateDates(`${selectedTournament}`)"
+        >
+          <option disabled selected value="">Select a Grand Slam</option>
+          <template x-for="tournament in tournaments" :key="tournament.slam">
+            <option :value="tournament.slam" x-text="tournament.slam"></option>
+          </template>
+        </select>
+      </div>
+      <p
+        class="text-2xl"
+        x-text="message"
+        :class="colour === 'red' ? 'text-red-700' : colour === 'blue' ? 'text-blue-700' : 'text-green-700'"
+      ></p>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
